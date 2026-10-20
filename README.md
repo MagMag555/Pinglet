@@ -37,3 +37,10 @@ There's a OpenSource License for the msi's exe file to prevent blockage by Smart
 
 The exe file is 41MB large, because of that it isn't listed here
 **Note:** The exe file may take up to 30 seconds to load, we are working on that one
+
+### Credits
+
+SignPath - Code Signing
+Python
+Pyinstaller
+Customtkinter (the Documentation is very good)
