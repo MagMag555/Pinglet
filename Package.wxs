@@ -1,0 +1,54 @@
+
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+
+  <Package
+    Name="Pinglet"
+    Manufacturer="Magu Software Studio"
+    Version="1.0.0"
+    UpgradeCode="{7F1A2B3C-4D5E-4678-9012-ABCDEF123456}">
+
+    <MajorUpgrade
+      DowngradeErrorMessage="Eine neuere Version ist bereits installiert." />
+
+    <MediaTemplate />
+
+    <Feature Id="MainFeature" Title="Pinglet">
+      <ComponentGroupRef Id="PingletFiles" />
+      <ComponentRef Id="DesktopShortcut" />
+    </Feature>
+
+  </Package>
+
+  <Fragment>
+    <StandardDirectory Id="ProgramFilesFolder">
+      <Directory Id="INSTALLFOLDER" Name="Pinglet" />
+    </StandardDirectory>
+
+    <StandardDirectory Id="DesktopFolder" />
+
+    <ComponentGroup Id="PingletFiles" Directory="INSTALLFOLDER">
+      <Component Id="PingletExecutable">
+        <File Id="PingletExe" Source="Pinglet.exe" />
+      </Component>
+    </ComponentGroup>
+
+    <Component Id="DesktopShortcut" Directory="DesktopFolder">
+      <Shortcut
+        Id="PingletDesktopShortcut"
+        Name="Pinglet"
+        Description="Pinglet starten"
+        Target="[#PingletExe]"
+        WorkingDirectory="INSTALLFOLDER" />
+
+      <RegistryValue
+        Root="HKCU"
+        Key="Software\MaguSoftwareStudio\Pinglet"
+        Name="Installed"
+        Type="integer"
+        Value="1"
+        KeyPath="yes" />
+    </Component>
+
+  </Fragment>
+
+</Wix>
